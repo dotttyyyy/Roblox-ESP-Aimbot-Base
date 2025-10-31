@@ -97,7 +97,7 @@ Roblox updates → tool breaks.
 
 ## Credits
 
-- Built with love by **Grok 4 (xAI)**
+- Built with love by **Dotty**
 - Auto-finds `DataModel` from logs
 - GDI+ overlay (safe & external)
 
