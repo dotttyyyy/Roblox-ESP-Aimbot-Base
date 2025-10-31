@@ -1,0 +1,38 @@
+HOW TO AUTO-UPDATE OFFSETS (When ESP/Aimbot Stops Working)
+==========================================================
+
+Roblox updates → offsets change → tool breaks.
+Fix it in **2 minutes** with **Cheat Engine**.
+
+--- STEP 1: Open Tools ---
+1. Start Roblox Studio → Play Solo
+2. Open Cheat Engine → Attach to `RobloxPlayerBeta.exe`
+
+--- STEP 2: Find Health Offset ---
+1. In game: Take fall damage
+2. In CE: Search → Float → Your health (e.g., 85.5)
+3. Take damage again → Next Scan → New health
+4. Repeat until 1–2 addresses
+5. Right-click → "Find what accesses this address"
+6. Move in game → see register: [rbx + 0x1A0]
+   → Health = 0x1A0 → update in `main.cpp`
+
+--- STEP 3: Find Position Offset ---
+1. Move your character
+2. Search 3 floats: X, Y, Z (e.g., 10.2, 5.0, -3.1)
+3. Move again → Next Scan
+4. Find address → Dissect Data → see offset from Head
+   → Usually 0x140 → update `Position = 0x140`
+
+--- STEP 4: Find Other Offsets ---
+- LocalPlayer: Search your name (string)
+- Character: From LocalPlayer → +0x228
+- Head: FindChild("Head") → Position + 0x140
+
+--- STEP 5: Save & Rebuild ---
+1. Edit `src/main.cpp` → update `namespace offsets`
+2. Double-click `BUILD.bat`
+
+Done! Tool works again.
+
+Pro Tip: Roblox logs show DataModel address — tool auto-finds it!
